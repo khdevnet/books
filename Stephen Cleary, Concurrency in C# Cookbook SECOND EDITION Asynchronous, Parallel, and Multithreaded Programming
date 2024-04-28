@@ -1,0 +1,42 @@
+## Stephen Cleary, Concurrency in C# Cookbook SECOND EDITION Asynchronous, Parallel, and Multithreaded Programming
+
+Concurrency 
+Doing more than one thing at a time. 
+Multithreading 
+A form of concurrency that uses multiple threads of execution.
+Parallel processing
+Doing lots of work by dividing it up among multiple threads that run concurrently.
+Asynchronous programming
+A form of concurrency that uses futures or callbacks to avoid unnecessary threads. A future (or promise) is a type that represents some operation that will complete in the future. Some modern future types in .NET are Task and Task. 
+Reactive programming 
+A declarative style of programming where the application reacts to events. 
+
+data parallelism and task parallelism. Data parallelism is when you have a bunch of data items to process, and the processing of each piece of data is mostly independent from the other pieces. Task parallelism is when you have a pool of work to do, and each piece of work is mostly independent from the other pieces. 
+
+
+Asynchronous programming 
+has two primary benefits. The first benefit is for
+end-user GUI programs: asynchronous programming enables responsiveness.
+Everyone has used a program that temporarily locks up while it’s working; an
+asynchronous program can remain responsive to user input while it’s working.
+
+
+Parallel programming 
+should be used any time you have a fair amount of
+computation work that can be split up into independent chunks. Parallel
+programming increases the CPU usage temporarily to improve throughput; this
+is desirable on client systems where CPUs are often idle, but it’s usually not
+appropriate for server systems.
+
+Reactive programming
+ has a higher learning curve than other forms of concurrency, and the code can be harder to maintain unless you keep up with your reactive skills.
+
+TPL Dataflow
+ is an interesting mix of asynchronous and parallel technologies. It’s useful when you have a sequence of processes that need to be applied to your data. For example, you may need to download data from a URL, parse it, and then process it in parallel with other data. TPL Dataflow is commonly used as a simple pipeline, where data enters one end and travels until it comes out the other
+
+
+Multithreaded Programming
+A thread is an independent executor. Each process has multiple threads in it, and each of those threads can be doing different things simultaneously. Each thread has its own independent stack but shares the same memory with all the other threads in a process. Every .NET application has a thread pool. The thread pool maintains a number of worker threads that are waiting to execute whatever work you have for them to do. The thread pool is responsible for determining how many threads are in the thread pool at any time.
+
+Most concurrent technologies have one similar aspect: they are functional in nature. I don’t mean functional as in “they get the job done,” but rather functional as a style of programming that is based on function composition. If you adopt a functional mindset, your concurrent designs will be less convoluted. One principle of functional programming is purity (that is, avoiding side effects). Each piece of the solution takes some value(s) as input and produces some value(s) as output. As much as possible, you should avoid having these pieces depend on global (or shared) variables or update global (or shared) data structures
+
